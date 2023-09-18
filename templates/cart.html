@@ -1,0 +1,79 @@
+{% load static %}
+
+  <script type="text/javascript">
+    var user ='{{ request.user}}'
+    function getToken(name){
+    var cookieValue = null;
+    if(document.cookie && document.cookie !=''){
+      var cookies = document.cookie.split(';');
+      for (var i = 0;i <cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.substring(0,name.length + 1 )===(name + '=')){
+          cookieValue = decodeURIComponent(cookie.substring(name.length+1));
+          break;
+        }
+      }
+    }
+    return cookieValue
+  }
+var csrftoken = getToken('csrftoken')
+  </script>
+
+   <div class="CartContainer">
+       <div class="Header">
+        <a href="{% url 'index' %}"><button><div class="save"><u>Home</u></div></button></a>
+        <h3 class="Heading">Shopping Cart </h3>
+        <h5 class="Action">Remove all</h5>
+       </div>
+       {% for item in items %}
+       <div class="Cart-Items">
+          <div class="image-box">
+            <img src="{{ item.product.image.url }}" width="225px" height="200px" />
+          </div>
+          <div class="about">
+            <h1 class="">{{ item.product.nomi }}</h1>
+            <h3 class="subtitle"></h3>
+            <img src=""/>
+          </div>
+          <div class="counter">
+            <button img data-product="{{ item.product.id }}" width="20px" data-action="add" class="chg-quantity update-cart">+</button>
+          </div>
+            <div class="count">{{ item.quantity }}</div>
+            <button img data-product="{{ item.product.id }}"  width="20px" data-action="remove"  class="chg-quantity update-cart">-</button>
+          </div>
+          <div class="prices">
+            <div class="amount">${{ item.product.narxi }}</div>
+            <button><div class="save"><u>Save for later</u></div></button>
+            <button><div class="remove" data-product="{{ item.product.id }}" data-action="delete"><u>Remove</u></div></button>
+          </div>
+       </div>
+       <br>
+       {% endfor %}
+     <hr> 
+     <div class="checkout">
+     <div class="total">
+        <div>
+            <div class="Subtotal">Sub-Total</div>
+            <div class="items">{{ order.get_cart_items }}</div>
+        </div>
+         </div>
+        <div class="total-amount">${{ order.get_cart_total }}</div>
+     </div>
+       <button>type</button>
+     <div>
+     <button class="button">Checkout</button>
+   </div>
+
+
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/popper.min.js' %}"></script>
+      <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+      <!-- sidebar -->
+      <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+      <script src="{% static 'js/custom.js' %}"></script>
+
+      <script src="{% static 'js/cart.js' %}"></script>
+
+   </body>
+</html>

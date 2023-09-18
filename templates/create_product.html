@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+      <div id="contact" class="contact">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <form method="post" enctype="multipart/form-data" class="main_form">
+                     <div class="row">
+                        
+                        <div class="col-md-12 ">
+                           <h3>Maxsulot nomi</h3>
+                        </div>
+                        {% csrf_token %}
+                        
+                        <div class="col-md-12 ">
+                           <input placeholder="nomi" type="text" class="contactusmess" name="nomi" class="form-control" maxlength="250" required="" id="id_nomi">
+                        </div>
+
+                        <div class="col-md-12">
+                           <input placeholder="malumoti" name="malumot" class="contactusmess" class="form-control" cols="40" rows="10" required="" id="id_malumot"> 
+                        </div>
+
+                        <div class="col-md-12">
+                           <input placeholder="narxi" type="text" name="narxi" class="contactusmess" class="form-control" maxlength="10" required="" id="id_narxi">        
+                        </div>
+
+                        <div class="col-md-12">
+                           <input type="file" name="image" class="contactusmess" accept="image/*" required="" id="id_image">
+                        </div>
+                        <div class="col-md-12">
+                           <button class="send_btn">Malumot qoshish</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+         <div class="container-fluid">
+            <div class="map_section">
+               <div id="map">
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+<br>
+<br>
+<br>
+<br>
+{% endblock content %}

@@ -1,0 +1,261 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+        <script type="text/javascript">
+    var user ='{{ request.user}}'
+    function getToken(name){
+    var cookieValue = null;
+    if(document.cookie && document.cookie !=''){
+      var cookies = document.cookie.split(';');
+      for (var i = 0;i <cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.substring(0,name.length + 1 )===(name + '=')){
+          cookieValue = decodeURIComponent(cookie.substring(name.length+1));
+          break;
+        }
+      }
+    }
+    return cookieValue
+  }
+var csrftoken = getToken('csrftoken')
+</script>
+
+
+<!-- viws malumotni korish qismi boshi -->
+<style>
+   .modal-header {
+      flex-direction: column;
+      position: relative;
+      align-items: center;
+   }
+   .modal-dialog {
+      max-width: 700px;
+   }
+   .modal-content {
+      width: 139;
+   }
+
+   .close {
+      position: absolute;
+      top: ;
+      right: 16px;
+   }
+</style>
+
+
+{% for post in page %}
+<div class="modal fade" id="exampleModal-{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-{{ forloop.counter }}" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            
+            <img src="{{post.image.url}}" alt="" width="150">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidder="true">&time;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <h3>{{post.nomi}}</h3>
+            <p>{{post.malumot}}</p>
+            <div>
+               <span class="price">${{post.narxi}}</span>
+               <div class="container" style="text-align: center;">
+                  <i></i>
+                     <button type="button" class="btn btn-outline-info" ><a href="#">Savat</a></button>
+                     <button type="button" class="btn btn-outline-info" ><a href="{% url 'index' %}">Ortka</a></button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endfor %}
+
+<!-- viws malumotni korish qismi oxiri -->
+
+
+
+<br>
+<br>
+<br>
+</div>
+
+      <div class="glasses">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-10 offset-md-1">
+                  <div class="titlepage">
+
+<link rel="stylesheet" href= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
+        
+    <script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+    </script> 
+        
+    <script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"> 
+    </script> 
+        
+    <script src= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> 
+    </script> 
+      
+    <style type="text/css">
+        h1 {
+            color:green;
+        }
+        .xyz {
+            background-size: auto;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .btn-circle.btn-sm {
+            width: 30px;
+            height: 30px;
+            padding: 6px 0px;
+            border-radius: 15px;
+            font-size: 8px;
+            text-align: center;
+        }
+        .btn-circle.btn-md {
+            width: 50px;
+            height: 50px;
+            padding: 7px 10px;
+            border-radius: 25px;
+            font-size: 10px;
+            text-align: center;
+        }
+        .btn-circle.btn-xl {
+            width: 70px;
+            height: 70px;
+            padding: 10px 16px;
+            border-radius: 35px;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+  
+
+
+<!-- Qidiruv qismi joyi -->
+                     <div class="container">
+                        <form >
+                           <div class = "input-group">
+                           <div class="input-group-prepend">
+                           </div>
+                           <input name ="q"  type="text" class="form-control form-control-lg" placeholder="Qidirish.."  >
+                           <button class="btn btn-info btn-lg">Qidirish</button>
+                           </div>
+                           <div class="container">
+                              {% if page|length < 1 %}
+                              <p style="color: red;">Maxsulot topilmadi</p>
+                              {% endif %}
+                           </div>
+                        </form>
+                     </div>
+
+
+<br>
+<br>
+<br>
+<div style="text-align: center;">
+   <h1>Kategoriyalar</h1>
+</div>
+<div class="container" style="text-align: center;">
+      <button type="button" class="btn btn-outline-info" ><img src="{% static 'images/bollalar.png' %}" style="width: 40px; height: 40px;"><a href="#">Bolalar dunyosi</a></button>
+      <button type="button" class="btn btn-outline-info" ><img src="{% static 'images/kochmas mulk.jpg' %}" style="width: 40px; height: 40px;"><a href="#">Kochmas mulk</a></button>
+      <button type="button" class="btn btn-outline-info" ><img src="{% static 'images/afto.jpg' %}" style="width: 40px; height: 40px;"><a href="#">Tarnsport</a></button>
+      <button type="button" class="btn btn-outline-info" ><img src="{% static 'images/rabota.png' %}" style="width: 40px; height: 40px;"><a href="#">Ish</a></button>
+      <button type="button" class="btn btn-outline-info" ><img src="{% static 'images/dom.jpg' %}" style="width: 40px; height: 40px;"><a href="#">Uy va bog'</a></button>
+      <button type="button" class="btn btn-outline-info" ><img src="{% static 'images/elektor.png' %}" style="width: 40px; height: 40px;"><a href="#">Elektir</a></button>
+      <button type="button" class="btn btn-outline-info" ><img src="{% static 'images/xizmat.jpg' %}" style="width: 40px; height: 40px;"><a href="#">Xizmatlar</a></button>
+</div>
+
+
+
+
+
+
+
+                     <h2>Our Glasses</h2>
+                     <p>biz bilan xaridlar yanada oson
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container-fluid"  style="text-align: center;">
+            <div class="row">
+               {% for post in page %}
+               <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                  <div class="glasses_box">
+                     {% if post.image %}
+                     <figure><img style="width: 400px; height: 400px ;" src="{{post.image.url}}" alt="#"/></figure>
+                     {% endif %}
+                     <h3 id="soz">{{post.nomi}}</h3>
+                     <p id="soz">{{post.malumot}}</p>
+
+
+                     <div class="">
+                     <hr>
+                     {% if user.is_authenticated %}
+
+<!-- Savatka qoshish 
+qismi  --><button data-product='{{ post.id }}' data-action="add" class="btn btn-outline-success add-btn update-cart"  id="button Add to Cartadd">Savatka +</button>
+
+<!-- Comentga otish 
+qismi  -->           <button type="button" class="btn btn-warning"><a href="{% url 'comment' post.pk %}">Comment</a></button>
+                     
+<!-- Malumotini korish 
+qismi  -->           <button class="btn btn-outline-success"> <a data-toggle="modal" data-target="#exampleModal-{{ forloop.counter }}">Ma'lumoti</a></button>
+                     
+                     <h4 style="display: inline-block; float: center;">
+                     <strong>
+                      ${{post.narxi}}
+                    </strong>
+                    </h4>
+
+                     {% else %}
+                     <a href="{% url 'login' %}">
+                     <button id="buttonadd">savatka +</button>
+                     </a>
+                      <a class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal-{{ forloop.counter}}">ma'lumoti</a>
+                    <h4 style="display: inline-block; float: center" >
+                     <strong>
+                        ${{post.narxi}}
+                      </strong>
+                    </h4>
+                    {% endif %}
+
+
+
+                     </div>
+                  </div>
+               </div>
+               {% endfor %}
+            </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+            {% if page.has_previous %}
+            <button type="button" class="btn btn-outline-info"><a href="{% url 'glasses'%}?page={{page.previous_page_number }}">oldingi saxifa</button>
+            {% endif %}
+            {% if page.has_next %}
+            <button type="button" class="btn btn-outline-info"><a href="{% url 'glasses' %}?page={{page.next_page_number}}">keyngi saxifa</button>
+               {% endif %}
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+{% endblock content %}

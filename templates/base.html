@@ -1,0 +1,276 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+
+      <script type="text/javascript">
+         var user ='{{ request.user }}'
+         function getToken(name){
+            var cookieValue = null;
+            if(document.cookie && document.cookie !=''){
+               var cookie = document.cookie.split(';');
+               for (var i = 0;i <cookies.length; i++) {
+                  var cookie = cookies[i].trim();
+                  if (cookie.substring(0,name.length + 1 )===(name + '=')){
+                     cookieValue = decodeURIComonent(cookie.substring(name.length+1));
+                     break;
+                  }
+               }
+            }
+            return cookieValue
+         }
+</script>
+
+
+
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>olx.uz</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+
+      <style>
+/* Style The Dropdown Button */
+.dropbtn {
+        display: inline-block;
+    padding: 10px 45px;
+    background-color: #ffbe33;
+    color: #ffffff;
+    border-radius: 45px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    border: none;
+    margin-top: 10px;
+}
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+
+  min-width: 150px;
+ /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius: 45px;
+
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #yellow;
+color: #ffbe33;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+</style>
+<style type="text/css">
+  #cart-icon{
+  width:49px;
+  display: inline-block;
+  margin-left: 15px;
+  color: red;
+}
+#cart-total{
+  display: inline-table;
+  text-align: center;
+  color:#fff;
+  background-color: red;
+  width: 20px;
+  height: 25px;
+  border-radius: 50%;
+  font-size: 14px;
+
+}
+</style>
+
+
+
+
+
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+      <!-- style css -->
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+      <!-- fevicon -->
+      <link rel="icon" href="{% static 'images/fevicon.png" type="image/gif' %}" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   
+<style>
+   #soz {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+   }
+</style>
+
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="{% static 'images/loading.gif' %}" alt="#" /></div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
+      <header>
+         <!-- header inner -->
+         <div class="header">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                     <div class="full">
+                        <div class="center-desk">
+                           <div class="logo">
+                              <a href="index.html"><img src="{% static 'images/logo.png' %}" alt="#" /></a>
+
+
+
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                     <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarsExample04">
+                           <ul class="navbar-nav mr-auto">
+                              <li class="nav-item active">
+                                 <a class="nav-link" href="{% url 'index' %}">Home</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="{% url 'about' %}">About</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="{% url 'glasses' %}">Our Glasses</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="{% url 'shop' %}">Shop</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+                              </li>
+
+                              
+<!-- Registartsiya bolimidan song Chiqish bolimi -->
+
+                              <form class="form-inline">
+                                 {% if user.is_authenticated %}
+                                 <div class="dropdown">
+                                    <button class="dropbtn" class="order_online">{{ user.username|title }}</button>
+                                    <div class="dropdown-content">
+                                       <button class="btn-info">
+                                          <a href="{% url 'logout' %}">Chiqish</a>
+                                       </button>
+                                    </div>
+                                 </div>
+<!-- Karzinka Rasm qismi boshi-->
+                                 <div>
+                                    <a href="{% url 'card' %}">
+                                       <img id="cart-icon" src="{% static 'images/carts.png' %}">
+                                    </a>
+                                    <p id="cart-total">{{ cartItems }}</p>
+                                 </div>
+                                 {% else %}
+<!-- Karzinka Rasm qismi Oxiri-->
+                                 <form>
+                              <li class="nav-item d_none login_btn"><a class="nav-link" href="{% url 'login' %}">Login</a>
+                              </li>
+                              
+                              <li class="nav-item d_none login_btn"><a class="nav-link" href="{% url 'signup' %}">Register</a>
+                              </li>
+                              </form>
+                              {% endif %}
+                              <li class="nav-item d_none sea_icon">
+                                 <a class="nav-link" href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i><i class="fa fa-search" aria-hidden="true"></i></a>
+                              </li>
+                              </form>
+                           </ul>
+                        </div>
+                     </nav>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </header>
+{% block content %}
+
+
+
+
+{% endblock content %}
+<footer>
+         <div class="footer">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-8 offset-md-2">
+                     <ul class="location_icon">
+                        <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a><br> Location</li>
+                        <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i></a><br> +998 97 609 7336</li>
+                        <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a><br> anvar4353@gmail.com</li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="copyright">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <p>© 2019 All Rights Reserved. Design by<a href="https://html.design/"> Free Html Templates</a></p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/popper.min.js' %}"></script>
+      <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+      <!-- sidebar -->
+      <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+      <script src="{% static 'js/custom.js' %}"></script>
+      <script src="{% static 'js/cart.js' %}"></script>
+
+   </body>
+</html>
+

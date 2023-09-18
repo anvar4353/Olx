@@ -1,0 +1,433 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+        <script type="text/javascript">
+    var user ='{{ request.user}}'
+    function getToken(name){
+    var cookieValue = null;
+    if(document.cookie && document.cookie !=''){
+      var cookies = document.cookie.split(';');
+      for (var i = 0;i <cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.substring(0,name.length + 1 )===(name + '=')){
+          cookieValue = decodeURIComponent(cookie.substring(name.length+1));
+          break;
+        }
+      }
+    }
+    return cookieValue
+  }
+var csrftoken = getToken('csrftoken')
+</script>
+
+
+
+
+<!-- viws malumotni korish qismi boshi -->
+<style>
+   .modal-header {
+      flex-direction: column;
+      position: relative;
+      align-items: center;
+   }
+   .modal-dialog {
+      max-width: 700px;
+   }
+   .modal-content {
+      width: 139;
+   }
+
+   .close {
+      position: absolute;
+      top: ;
+      right: 16px;
+   }
+</style>
+
+
+{% for post in data %}
+<div class="modal fade" id="exampleModal-{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-{{ forloop.counter }}" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            
+            <img src="{{post.image.url}}" alt="" width="150">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidder="true">&time;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <h3>{{post.nomi}}</h3>
+            <p>{{post.malumot}}</p>
+            <div>
+               <span class="price">${{post.narxi}}</span>
+               <div class="container" style="text-align: center;">
+                  <i></i>
+                     <button type="button" class="btn btn-outline-info" ><a href="#">Savat</a></button>
+                     <button type="button" class="btn btn-outline-info" ><a href="{% url 'index' %}">Ortka</a></button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endfor %}
+
+<!-- viws malumotni korish qismi oxiri -->
+
+
+
+      <!-- end header inner -->
+      <!-- end header -->
+      <!-- banner -->
+
+      <section class="banner_main">
+         <div id="banner1" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+               <li data-target="#banner1" data-slide-to="0" class="active"></li>
+               <li data-target="#banner1" data-slide-to="1"></li>
+               <li data-target="#banner1" data-slide-to="2"></li>
+            </ol>
+<!-- Qidiruv qismi joyi -->
+                     <div class="container">
+                        <form >
+                           <div class = "input-group">
+                           <div class="input-group-prepend">
+                           </div>
+                           <input name ="q"  type="text" class="form-control form-control-lg" placeholder="Qidirish.."  >
+                           <button class="btn btn-info btn-lg">Qidirish</button>
+                           </div>
+                           <div class="container">
+                              {% if data|length < 1 %}
+                              <p style="color: red;">Maxsulot topilmadi</p>
+                              {% endif %}
+                           </div>
+                        </form>
+                     </div>
+
+            
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <div class="container"  style="width: 400px; height: 700px;">
+                     <div class="carousel-caption">
+                        {% for post in data %}
+                        {% if 0 < forloop.counter0 and 2 > forloop.counter0 %}
+                        <div class="text-bg">
+                           <h1> <span class="blu">Bizning maxsulotlar <br></span>Aksiya</h1>
+                           {% if post.image %}
+                           <figure><img src="{{post.image.url}}" alt="#"/></figure>
+                           {% endif %}
+                           <a class="read_more" href="#">Ko'proq ma'lumot</a>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                     </div>
+                  </div>
+               </div>
+               
+
+
+               <div class="carousel-item">
+                  <div class="container"  style="width: 400px; height: 700px;">
+                     <div class="carousel-caption">
+                        {% for post in data %}
+                        {% if 3 < forloop.counter0 and 5 > forloop.counter0 %}
+                        <div class="text-bg">
+                           <h1> <span class="blu">Bizning maxsulotlar <br></span>Aksiya</h1>
+                           {% if post.image %}
+                           <figure><img src="{{post.image.url}}" alt="#"/></figure>
+                           {% endif %}
+                           <a class="read_more" href="#">Ko'proq ma'lumot</a>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                     </div>
+                  </div>
+               </div>
+
+
+               <div class="carousel-item">
+                  <div class="container"  style="width: 400px; height: 700px;">
+                     <div class="carousel-caption">
+                        {% for post in data %}
+                        {% if 4 < forloop.counter0 and 6 > forloop.counter0 %}
+                        <div class="text-bg">
+                           <h1> <span class="blu">Bizning maxsulotlar <br></span>Aksiya</h1>
+                           {% if post.image %}
+                           <figure><img src="{{post.image.url}}" alt="#"/></figure>
+                           {% endif %}
+                           <a class="read_more" href="#">Ko'proq ma'lumot</a>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                     </div>
+                  </div>
+               </div>
+
+
+            </div>
+            <a class="carousel-control-prev" href="#banner1" role="button" data-slide="prev">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
+            <a class="carousel-control-next" href="#banner1" role="button" data-slide="next">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </a>
+         </div>
+      </section>
+
+
+
+
+
+      <!-- end banner -->
+      <!-- about section -->
+      <div class="about">
+         <div class="container">
+            <div class="row d_flex">
+               {% for post in data %}
+               {% if 3 < forloop.counter0 and 5 > forloop.counter0 %}
+               <div class="col-md-5">
+                  <div class="about_img">
+                     {% if post.image %}
+                     <figure><img src="{{post.image.url}}" alt="#"/></figure>
+                     {% endif %}
+                  </div>
+               </div>
+               <div class="col-md-7">
+                  <div class="titlepage">
+                     <h2>{{post.nomi}}</h2>
+                     <p>{{post.malumot}}</p>
+                  </div>
+                  <a class="read_more" href="#">Ko'proq ma'lumot</a>
+               </div>
+               {% endif %}
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+      <!-- about section -->
+      <!-- Our  Glasses section -->
+
+
+
+      <div class="glasses">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-10 offset-md-1">
+                  <div class="titlepage">
+                     <h2>Bizning maxsulotlar</h2>
+                     <p>Bazadan maxsulotlarni korsatib turish qismi
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container-fluid">
+            <div class="row">
+               {% for post in data %}
+               {% if 0 < forloop.counter0 and 5 > forloop.counter0 %}
+               <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                  <div class="glasses_box">
+                     {% if post.image %}
+                     <figure><img style="width: 400px; height: 400px ;" src="{{post.image.url}}" alt="#" /></figure>
+                     {% endif %}
+                     <h3 id="soz">{{post.nomi}}</h3>
+                     <p id="soz">{{post.malumot}}</p>
+                     <div class="">
+                        <hr>
+                        {% if user.is_authenticated %}
+                     <button data-product='{{ post.id }}' data-action="add" class="btn btn-outline-success add-btn update-cart"  id="button Add to Cartadd">Savatka +</button>
+                     
+                     <button type="button" class="btn btn-warning"><a href="{% url 'comment' post.pk %}">Comment</a></button>
+
+                     <button class="btn btn-outline-success"> <a data-toggle="modal" data-target="#exampleModal-{{ forloop.counter }}">Ma'lumotii</a></button>
+
+                     <h4 style="display: inline-block; float: center;">
+                     <strong>
+                      ${{post.narxi}}
+                    </strong>
+                    </h4>
+
+
+                     {% else %}
+                     <a href="{% url 'login' %}">
+                     <button class="btn btn-outline-success" id="buttonadd">Savatka +</button>
+                     </a>
+                      <a class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal-{{ forloop.counter}}">ma'lumoti</a>
+                    <h4 style="display: inline-block; float: center" >
+                     <strong>
+                        ${{post.narxi}}
+                      </strong>
+                    </h4>
+                    {% endif %}
+                     </div>
+                  </div>
+               </div>
+               {% endif %}
+               {% endfor %}
+
+               <div class="col-md-12">
+                  <a class="read_more" href="{% url 'create_product' %}">Bazaga maxsulot qo'shish</a>
+               </div>
+   
+            </div>
+         </div>
+      </div>
+
+<br>
+<br>
+<br>
+
+
+
+
+
+<div class="col-md-20 offset-md-5">
+   <h1>Kategoriyalar</h1>
+</div>
+<div class="container" style="text-align: center;">
+      <button type="button" class="btn btn-outline-info" ><img src="{% static 'images/bollalar.png' %}" style="width: 40px; height: 40px;"><a href="#">Bolalar dunyosi</a></button>
+      <button type="button" class="btn btn-outline-info" ><img src="{% static 'images/kochmas mulk.jpg' %}" style="width: 40px; height: 40px;"><a href="#">Kochmas mulk</a></button>
+      <button type="button" class="btn btn-outline-info" ><img src="{% static 'images/afto.jpg' %}" style="width: 40px; height: 40px;"><a href="#">Tarnsport</a></button>
+      <button type="button" class="btn btn-outline-info" ><img src="{% static 'images/rabota.png' %}" style="width: 40px; height: 40px;"><a href="#">Ish</a></button>
+      <button type="button" class="btn btn-outline-info" ><img src="{% static 'images/dom.jpg' %}" style="width: 40px; height: 40px;"><a href="#">Uy va bog'</a></button>
+      <button type="button" class="btn btn-outline-info" ><img src="{% static 'images/elektor.png' %}" style="width: 40px; height: 40px;"><a href="#">Elektir</a></button>
+      <button type="button" class="btn btn-outline-info" ><img src="{% static 'images/xizmat.jpg' %}" style="width: 40px; height: 40px;"><a href="#">Xizmatlar</a></button>
+</div>
+
+      <!-- end Our  Glasses section -->
+      <!-- Our shop section -->
+      <div id="about" class="shop">
+         <div class="container-fluid">
+            <div class="row">
+               {% for post in data %}
+               {% if 3 < forloop.counter0 and 5 > forloop.counter0 %}
+               <div class="col-md-5">
+                  <div  class="shop_img">
+                     {% if post.image %}
+                     <figure><img src="{{post.image.url}}" alt="#" style="width: 400px; height: 700px; text-align: center;"/></figure>
+                     {% endif %}
+                  </div>
+               </div>
+               <div class="col-md-7 padding_right0">
+                  <div class="max_width">
+                     <div class="titlepage">
+                        <h2>${{post.narxi}}</h2>
+                        <p>{{post.nomi}}</p>
+                        <p>{{post.malumot}}</p>
+                        <a class="read_more" href="#">Ko'proq ma'lumot</a>
+                     </div>
+                  </div>
+               </div>
+               {% endif %}
+               {% endfor %}
+
+
+            </div>
+         </div>
+      </div>
+      <!-- end Our shop section -->
+      <!-- clients section -->
+      <div class="clients">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Iphone</h2>
+                     <p>Dokonimizda yangi iphone gadjetlari</p>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div id="myCarousel" class="carousel slide clients_Carousel " data-ride="carousel">
+                     <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                     </ol>
+                     <div class="carousel-inner"  style="width: 1000px; height: 400px;">
+                        <div class="carousel-item active">
+                           <div class="container">
+                              <div class="carousel-caption ">
+                                 <div class="row">
+                                    {% for post in data %}
+                                    {% if 3 < forloop.counter0 and 5 > forloop.counter0 %}
+                                    <div class="col-md-12">
+                                       <div class="clients_box">
+                                          {% if post.image %}
+                                          <figure><img src="{{post.image.url}}" alt="#"/></figure>
+                                          {% endif %}
+                                          <h3>{{post.nomi}}</h3>
+                                          <p>{{post.malumot}}</p>
+                                       </div>
+                                    </div>
+                                    {% endif %}
+                                    {% endfor%}
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="carousel-item">
+                           <div class="container">
+                              <div class="carousel-caption">
+                                 <div class="row">
+                                    {% for post in data %}
+                                    {% if 4 < forloop.counter0 and 6 > forloop.counter0 %}
+                                    <div class="col-md-12">
+                                       <div class="clients_box">
+                                          {% if post.image %}
+                                          <figure><img src="{{post.image.url}}" alt="#"/></figure>
+                                          {% endif %}
+                                          <h3>{{post.nomi}}</h3>
+                                          <p>{{post.malumot}}</p>
+                                       </div>
+                                    </div>
+                                    {% endif %}
+                                    {% endfor%}
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="carousel-item">
+                           <div class="container">
+                              <div class="carousel-caption">
+                                 <div class="row">
+                                    {% for post in data %}
+                                    {% if 3 < forloop.counter0 and 5 > forloop.counter0 %}
+                                    <div class="col-md-12">
+                                       <div class="clients_box">
+                                          {% if post.image %}
+                                          <figure><img src="{{post.image.url}}" alt="#"/></figure>
+                                          {% endif %}
+                                          <h3>{{post.nomi}}</h3>
+                                          <p>{{post.malumot}}</p>
+                                       </div>
+                                    </div>
+                                    {% endif %}
+                                    {% endfor%}
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                     <i class='fa fa-angle-left'></i>
+                     </a>
+                     <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                     <i class='fa fa-angle-right'></i>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <!-- end contact section -->
+      <!--  footer -->
+{% endblock content %}

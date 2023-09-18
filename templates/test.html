@@ -1,0 +1,8 @@
+{% for i in a %}
+<h1>{{i.nomi}}</h1>
+<h3>{{i.malumot}}</h3>
+{% if i.image %}
+<img src="{{i.image.url}}">
+{% endif %}
+<p>${{i.narxi}}</p>
+{% endfor %}
